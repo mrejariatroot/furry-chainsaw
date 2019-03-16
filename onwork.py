@@ -5,6 +5,8 @@ import pompatarele as ml
 from gpiozero import LightSensor, Buzzer
 r = sr.Recognizer()
 ldr = LightSensor(4)
+rl.rele1_off()
+ml.rele2_on()
 with sr.Microphone() as source:
     while True:
         try:
@@ -20,8 +22,9 @@ with sr.Microphone() as source:
                     if ldr.value >0.89:
                         rl.rele1_off()
                         ml.rele2_on()
-                        time.sleep(5)
                         ml.rele2_off()
+                        time.sleep(10)
+                        ml.rele2_on()
             else:
                 print("Unknow Command")
         except:
