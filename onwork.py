@@ -2,7 +2,9 @@ import speech_recognition as sr
 import relay as rl
 import time
 import pompatarele as ml
+from gpiozero import LightSensor, Buzzer
 r = sr.Recognizer()
+ldr = LightSensor(4)
 with sr.Microphone() as source:
     while True:
         try:
@@ -12,12 +14,14 @@ with sr.Microphone() as source:
             print(text)
             if("coffee" in text or int(input()) == 5):
                 print("ok")
-                rl.rele1_off()
-                time.sleep(10)#ne znaem vremeto
                 rl.rele1_on()
-                ml.rele2_on()
-                time.sleep(5)
-                ml.rele2_off()
+                print(ldr.value)
+                while ldr.value < 0.89: #ne znaem vremeto
+                    if ldr.value >0.89:
+                        rl.rele1_off()
+                        ml.rele2_on()
+                        time.sleep(5)
+                        ml.rele2_off()
             else:
                 print("Unknow Command")
         except:
