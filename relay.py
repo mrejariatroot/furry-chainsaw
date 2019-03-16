@@ -8,11 +8,11 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(channel, GPIO.OUT)
 
 
-def rele1_on():
+def rele1_off():
     GPIO.output(16, GPIO.HIGH)  # Turn motor on
 
 
-def rele1_off():
+def rele1_on():
     GPIO.output(16, GPIO.LOW)  # Turn motor off
 
 
