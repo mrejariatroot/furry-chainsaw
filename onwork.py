@@ -12,15 +12,14 @@ with sr.Microphone() as source:
         try:
             r.adjust_for_ambient_noise(source)
             audio = r.listen(source)
-            text = 'vfgg' #r.recognize_google(audio)
+            text = r.recognize_google(audio)
             print(text)
-            if("coffee" in text or int(input()) == 5):
+            if("coffee" in text):
                 print("ok")
                 rl.rele1_on()
                 print(ldr.value)
                 while ldr.value < 0.89: #ne znaem vremeto
-                    if ldr.value >0.89:
-                        rl.rele1_off()
+                    if (ldr.value >0.89):
                         ml.rele2_on()
                         ml.rele2_off()
                         time.sleep(10)
