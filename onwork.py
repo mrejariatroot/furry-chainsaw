@@ -3,14 +3,14 @@ import relay as rl #importvame koda za nagrevatelq
 import time
 import pompatarele as ml #importvame koda za pompata
 from gpiozero import LightSensor, Buzzer #a tuk importvame scripta koito ni raboti s fotorezistora
-r = sr.Recognizer()
-ldr = LightSensor(4)
-rl.rele1_off()
-ml.rele2_off()
-with sr.Microphone() as source:
-    while True:
-        try:
-            def restart():
+def restart():    
+    r = sr.Recognizer()
+    ldr = LightSensor(4)
+    rl.rele1_off()
+    ml.rele2_off()
+    with sr.Microphone() as source:
+        while True:
+            try:
                 r.adjust_for_ambient_noise(source, duration=0.5)#Tova e za namalqvane na vremeto za slushane
                 audio = r.listen(source)
                 print("I'm listening") #Ako gornoto ne raboti pravilno tova shte e hint za koga usera da govori
@@ -30,7 +30,7 @@ with sr.Microphone() as source:
                 return restart()
             else:
                 print("Unknow Command") #ako neshto zburkash nali si ebe maikata :)
-                return restart()
+                return restart1()
         except:
             print("Unknow Command") #tva ne znam zashto e
-            return restart()
+            return restart1()
