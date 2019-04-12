@@ -25,12 +25,14 @@ def restart():
                             ml.rele2_on() #puskame pompata
                             time.sleep(10) #deset sekundi kysoto kafe?!
                             ml.rele2_off() #spirame pompata da ne se oleesh
-                            return restart1()
-            def restart1():
-                return restart()
+                            restart1()
             else:
                 print("Unknow Command") #ako neshto zburkash nali si ebe maikata :)
-                return restart1()
+                restart1()
         except:
             print("Unknow Command") #tva ne znam zashto e
-            return restart1()
+            restart1()
+    return
+def restart1():
+    restart()
+    return
